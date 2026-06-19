@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kathleen Yearwood</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="bg-anim.css">
+</head>
+<body>
+
+<!-- SVG turbulence filters — drive the cover swirl -->
+<svg id="svg-filters" style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+  <defs>
+    <filter id="cloud-warp" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feTurbulence id="cloud-turb" type="fractalNoise" baseFrequency="0.009 0.011" numOctaves="4" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="92" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="cloud-warp-b" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feTurbulence id="cloud-turb-b" type="fractalNoise" baseFrequency="0.010 0.009" numOctaves="4" seed="13" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="92" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ============== COVER ============== -->
+<section class="cover" aria-label="Cover">
+  <div class="cover-photo"></div>
+
+  <div class="cloud-layer cloud-layer-1" aria-hidden="true">
+    <div class="cloud-inner"></div>
+  </div>
+  <div class="cloud-layer cloud-layer-2" aria-hidden="true">
+    <div class="cloud-inner"></div>
+  </div>
+
+  <div class="cover-light-overlay"></div>
+  <div class="cover-vignette"></div>
+  <div class="cover-grain"></div>
+
+  <div class="cover-title-wrap">
+    <span class="cover-eyebrow">a long-term reckoning</span>
+    <h1 class="cover-title">Kathleen Yearwood</h1>
+  </div>
+
+  <button class="scroll-cue" aria-label="Scroll to photographs">↓ open</button>
+</section>
+
+<!-- ============== BAND PHOTOGRAPHS ============== -->
+<section class="band-reveal" id="photographs">
+  <p class="band-label" aria-hidden="true">photographs</p>
+  <div class="band-grid">
+    <figure class="band-photo" style="--i:0">
+      <img src="images/band-1.jpg" alt="Kathleen Yearwood" loading="lazy">
+    </figure>
+    <figure class="band-photo" style="--i:1">
+      <img src="images/band-2.jpg" alt="" loading="lazy">
+    </figure>
+    <figure class="band-photo" style="--i:2">
+      <img src="images/band-3.jpg" alt="" loading="lazy">
+    </figure>
+    <figure class="band-photo" style="--i:3">
+      <img src="images/band-4.jpg" alt="" loading="lazy">
+    </figure>
+    <figure class="band-photo" style="--i:4">
+      <img src="images/band-5.jpg" alt="" loading="lazy">
+    </figure>
+    <figure class="band-photo" style="--i:5">
+      <img src="images/band-10.jpg" alt="" loading="lazy">
+    </figure>
+    <figure class="band-photo" style="--i:6">
+      <img src="images/band-11.jpg" alt="" loading="lazy">
+    </figure>
+    <figure class="band-photo" style="--i:7">
+      <img src="images/band-12.png" alt="" loading="lazy">
+    </figure>
+    <figure class="band-photo" style="--i:8">
+      <img src="images/Band-13.png" alt="" loading="lazy">
+    </figure>
+    <figure class="band-photo" style="--i:9">
+      <img src="images/band-14.png" alt="" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<!-- ============== BIO ============== -->
+<section class="bio-section" id="about">
+  <div class="bio-inner">
+    <p class="bio-text">Kathleen Yearwood has worked as a professional musician and composer for over fifty years. She plays electric guitar and sings using extended vocal techniques that push past anything you'd call conventional folk delivery, building songs out of noise and musique concrète as much as melody.</p>
+    <p class="bio-text">She trained at Capilano College in Vancouver in 1977, then went east to study the physics of music and electronic composition at McGill and Concordia in Montreal through the early '80s. Six of her experimental pieces aired on CBC Montreal's Alternances in that period. She's spent the decades since touring steadily: Vancouver and Winnipeg Folk Festivals, Mariposa, Edmonton Folk Music Festival, a two-month run through Denmark, Norway, England, France, Germany, Belgium, and Yugoslavia in 1991, repeat tours through Norway with her band Cheval de Guerre, FIMAV in Québec, the Kuryokhin International Festival in St. Petersburg, and multiple passes through Slovenia, Croatia, and Iceland. In the early '90s she was the soloist for Rita McKeough's experimental operas <em>In Bocca Al Lupo</em> and <em>Take It to the Teeth</em>. She's also played for audiences inside institutions — Edmonton Max, the Burnaby Centre for Women, Riverview Hospital — work she doesn't separate from the rest of her practice.</p>
+    <p class="bio-text">The records carry titles like <em>Book of Hate</em>, <em>Folk Songs</em>, <em>Requiem/World in Ashes</em>, <em>Apokalypsis</em>, and <em>Yes, You Were Born to Die</em>, released mostly on her own imprint, Voice of the Turtle.</p>
+    <p class="bio-text">She's also a writer and visual artist. Her novel <em>Self-Mutilation</em> was first published by the University of Oslo in 2003 and later reissued by Dumpster Fire Press, which also put out her second novel, <em>Suspicion</em>. Some editions go out hand-bound and illustrated by her own hand. She paints and prints as well, watercolors and linocuts mostly, sold directly through artpal.com.</p>
+    <p class="bio-text bio-pull">Eugene Chadbourne wrote that "there are singer/songwriters, and then there is Kathleen Yearwood, who can feel free to clobber them all over the head." R. Murray Schafer put it more bluntly: "This is not composition." Peggy Seeger, watching from the crowd at the Edmonton Folk Music Festival, reportedly just said: "Somebody please stop her..." She hasn't stopped.</p>
+  </div>
+</section>
+
+<!-- ============== THE RECORDS ============== -->
+<section class="moon-section" id="records">
+  <div class="moon-bg" aria-hidden="true"></div>
+  <div class="moon-cloud moon-cloud-1" aria-hidden="true">
+    <div class="moon-cloud-inner"></div>
+  </div>
+  <div class="moon-cloud moon-cloud-2" aria-hidden="true">
+    <div class="moon-cloud-inner"></div>
+  </div>
+  <div class="moon-grain" aria-hidden="true"></div>
+  <div class="moon-vignette" aria-hidden="true"></div>
+
+  <div class="moon-content">
+    <h2 class="moon-heading">The Records</h2>
+    <div class="album-list">
+
+      <article class="album-entry reveal-item" style="--i:0">
+        <h3 class="album-title">Apokalypsis</h3>
+        <span class="album-avail">merch available</span>
+        <iframe class="bandcamp-embed" title="Apokalypsis by Kathleen Yearwood Ordeal" src="https://bandcamp.com/EmbeddedPlayer/album=3018690947/size=large/bgcol=060809/linkcol=e2e9da/tracklist=false/transparent=true/" seamless><a href="https://kathleenyearwoodordeal.bandcamp.com/album/apokalypsis">Apokalypsis by Kathleen Yearwood Ordeal</a></iframe>
+      </article>
+
+      <article class="album-entry reveal-item" style="--i:1">
+        <h3 class="album-title">Yes, You Were Born to Die</h3>
+        <span class="album-avail">merch available</span>
+        <iframe class="bandcamp-embed" title="Yes, You Were Born To Die by Kathleen Yearwood Ordeal" src="https://bandcamp.com/EmbeddedPlayer/album=1484939648/size=large/bgcol=060809/linkcol=e2e9da/tracklist=false/transparent=true/" seamless><a href="https://kathleenyearwoodordeal.bandcamp.com/album/yes-you-were-born-to-die">Yes, You Were Born To Die by Kathleen Yearwood Ordeal</a></iframe>
+      </article>
+
+      <article class="album-entry reveal-item" style="--i:2">
+        <h3 class="album-title">REQUIEM / World in Ashes</h3>
+        <iframe class="bandcamp-embed" title="REQUIEM (World in Ashes) by Kathleen Yearwood Ordeal" src="https://bandcamp.com/EmbeddedPlayer/album=2078147545/size=large/bgcol=060809/linkcol=e2e9da/tracklist=false/transparent=true/" seamless><a href="https://kathleenyearwoodordeal.bandcamp.com/album/requiem-world-in-ashes-complete-version-with-8-movements">REQUIEM (World in Ashes) by Kathleen Yearwood Ordeal</a></iframe>
+      </article>
+
+      <article class="album-entry reveal-item" style="--i:3">
+        <h3 class="album-title">Folk Songs</h3>
+        <iframe class="bandcamp-embed" title="Folk Songs by Kathleen Yearwood Ordeal" src="https://bandcamp.com/EmbeddedPlayer/album=852451175/size=large/bgcol=060809/linkcol=e2e9da/tracklist=false/transparent=true/" seamless><a href="https://kathleenyearwoodordeal.bandcamp.com/album/folk-songs">Folk Songs by Kathleen Yearwood Ordeal</a></iframe>
+      </article>
+
+      <article class="album-entry reveal-item" style="--i:4">
+        <h3 class="album-title">Book of Hate</h3>
+        <span class="album-avail">merch available</span>
+        <iframe class="bandcamp-embed" title="Book of Hate by Kathleen Yearwood Ordeal" src="https://bandcamp.com/EmbeddedPlayer/album=2490071129/size=large/bgcol=060809/linkcol=e2e9da/tracklist=false/transparent=true/" seamless><a href="https://kathleenyearwoodordeal.bandcamp.com/album/book-of-hate">Book of Hate by Kathleen Yearwood Ordeal</a></iframe>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== THE ART ============== -->
+<section class="art-section" id="art">
+  <div class="dark-to-parchment" aria-hidden="true"></div>
+  <div class="art-inner">
+    <h2 class="section-heading">The Art</h2>
+
+    <div class="art-carousel" role="region" aria-label="Art gallery">
+      <button type="button" class="art-carousel-arrow art-carousel-prev" aria-label="Previous image">&#8592;</button>
+      <button type="button" class="art-carousel-arrow art-carousel-next" aria-label="Next image">&#8594;</button>
+      <div class="art-carousel-track">
+        <a class="art-slide" href="https://www.artpal.com/voiceoftheturtle" target="_blank" rel="noopener" aria-label="Crow — view on ArtPal">
+          <img src="images/crow.jpg" alt="Crow" loading="lazy">
+        </a>
+        <a class="art-slide" href="https://www.artpal.com/voiceoftheturtle" target="_blank" rel="noopener" aria-label="Lino print — view on ArtPal">
+          <img src="images/lino.jpg" alt="Lino print" loading="lazy">
+        </a>
+        <a class="art-slide" href="https://www.artpal.com/voiceoftheturtle" target="_blank" rel="noopener" aria-label="Night trees — view on ArtPal">
+          <img src="images/cover-night-trees.jpg" alt="Night trees" loading="lazy">
+        </a>
+        <a class="art-slide" href="https://www.artpal.com/voiceoftheturtle" target="_blank" rel="noopener" aria-label="Forest — view on ArtPal">
+          <img src="images/forest.jpg" alt="Forest" loading="lazy">
+        </a>
+      </div>
+      <div class="art-carousel-dots" aria-hidden="true"></div>
+    </div>
+
+    <a class="art-portal-link" href="https://www.ArtPal.com/voiceoftheturtle" target="_blank" rel="noopener">
+      <span class="art-portal-label">Original prints &amp; paintings</span>
+      <span class="art-portal-cta">Shop on ArtPal →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============== REACH HER ============== -->
+<section class="reach-section" id="reach-her">
+  <div class="reach-inner">
+    <figure class="reach-art">
+      <img src="images/cheval de guerre.png" alt="" loading="lazy">
+    </figure>
+    <h2 class="section-heading">Contact</h2>
+
+    <form class="reach-form">
+      <input type="text" placeholder="Your name">
+      <input type="email" placeholder="Your email">
+      <textarea rows="4" placeholder="Message"></textarea>
+      <button type="submit" class="send-btn">Send</button>
+    </form>
+
+    <p class="reach-label">Mailing list</p>
+    <form class="reach-form reach-inline">
+      <input type="email" placeholder="Your email">
+      <button type="submit" class="send-btn">Join</button>
+    </form>
+
+    <div class="social-links">
+      <a href="#">Instagram</a>
+      <a href="#">Bluesky</a>
+      <a href="#">Bandcamp</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">Kathleen Yearwood</footer>
+
+<script src="bg-anim.js"></script>
+<script>
+  // Scroll cue → photographs section
+  document.querySelector('.scroll-cue').addEventListener('click', function () {
+    document.getElementById('photographs').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Band photos: staggered fade-in
+  var bandPhotos = document.querySelectorAll('.band-photo');
+  var photoIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        photoIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  bandPhotos.forEach(function (p) { photoIO.observe(p); });
+
+  // Scroll-reveal for album entries and art items
+  var revealItems = document.querySelectorAll('.reveal-item');
+  var revealIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        revealIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealItems.forEach(function (el) { revealIO.observe(el); });
+
+  // Art carousel
+  (function () {
+    var track = document.querySelector('.art-carousel-track');
+    if (!track) return;
+    var carousel = document.querySelector('.art-carousel');
+    var slides = Array.from(track.querySelectorAll('.art-slide'));
+    var dotsWrap = document.querySelector('.art-carousel-dots');
+    var prevBtn = document.querySelector('.art-carousel-prev');
+    var nextBtn = document.querySelector('.art-carousel-next');
+    var current = 0;
+    var timer;
+
+    slides.forEach(function (_, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Slide ' + (i + 1));
+      if (i === 0) btn.classList.add('is-active');
+      btn.addEventListener('click', function () { go(i); });
+      dotsWrap.appendChild(btn);
+    });
+
+    function go(i) {
+      current = (i + slides.length) % slides.length;
+      track.scrollTo({ left: slides[current].offsetLeft, behavior: 'smooth' });
+      Array.from(dotsWrap.children).forEach(function (d, j) {
+        d.classList.toggle('is-active', j === current);
+      });
+      clearInterval(timer);
+      timer = setInterval(advance, 4500);
+    }
+
+    function advance() { go(current + 1); }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { go(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(current + 1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft')  { go(current - 1); }
+      if (e.key === 'ArrowRight') { go(current + 1); }
+    });
+
+    track.addEventListener('scroll', function () {
+      var idx = Math.round(track.scrollLeft / track.offsetWidth);
+      if (idx !== current) {
+        current = idx;
+        Array.from(dotsWrap.children).forEach(function (d, j) {
+          d.classList.toggle('is-active', j === idx);
+        });
+      }
+    }, { passive: true });
+
+    timer = setInterval(advance, 4500);
+  }());
+
+  // Moon section: trigger animation when scrolled into view
+  var moonSection = document.querySelector('.moon-section');
+  if (moonSection) {
+    var moonBg = moonSection.querySelector('.moon-bg');
+    var moonClouds = Array.from(moonSection.querySelectorAll('.moon-cloud'));
+    var moonEls = [moonBg].concat(moonClouds);
+    moonEls.forEach(function (el) { el.style.animationPlayState = 'paused'; });
+    var moonIO = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        moonEls.forEach(function (el) { el.style.animationPlayState = 'running'; });
+        moonIO.disconnect();
+      }
+    }, { threshold: 0.1 });
+    moonIO.observe(moonSection);
+  }
+</script>
+
+</body>
+</html>

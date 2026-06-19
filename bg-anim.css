@@ -1,0 +1,257 @@
+/* ============================================
+   COVER — single static image, living swirl overlay
+   Adapted from NakedStory / Portfolio-Page bg-anim module.
+   No crossfade: this cover uses ONE base photo, same as
+   the "We're Naked" cover technique — the swirl is the
+   only thing that moves.
+   ============================================ */
+
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #0a0d0a;
+}
+
+.cover-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/cover-night-trees.jpg');
+  background-size: cover;
+  background-position: center 65%;
+  background-repeat: no-repeat;
+  z-index: 0;
+  opacity: 0;
+  animation-name:            cover-intro-exit, cover-ghost;
+  animation-duration:        7s,               30s;
+  animation-timing-function: ease-out,         ease-in-out;
+  animation-iteration-count: 1,                infinite;
+  animation-delay:           0s,               7s;
+  animation-fill-mode:       forwards,         none;
+}
+
+/* ── swirl overlay layers — duplicate of the base photo,
+   distorted through SVG turbulence + screen-blended ── */
+.cloud-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 1;
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent 2%, black 22%, black 78%, transparent 98%);
+  mask-image: linear-gradient(to bottom,
+    transparent 2%, black 22%, black 78%, transparent 98%);
+}
+
+.cloud-inner {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/cover-night-trees.jpg');
+  background-size: cover;
+  background-position: center 65%;
+  background-repeat: no-repeat;
+}
+
+.cloud-layer-1 {
+  filter: url(#cloud-warp);
+  animation-name:            cloud-drift-1, cloud-fade, cloud-intro;
+  animation-duration:        22s,           28s,        5s;
+  animation-timing-function: ease-in-out,   ease-in-out, ease-out;
+  animation-iteration-count: infinite,      infinite,   1;
+  animation-delay:           0s,            10s,        5s;
+  animation-fill-mode:       none,          none,       both;
+}
+
+.cloud-layer-2 {
+  filter: url(#cloud-warp-b);
+  animation-name:            cloud-drift-2, cloud-fade, cloud-intro;
+  animation-duration:        26s,           28s,        5s;
+  animation-timing-function: ease-in-out,   ease-in-out, ease-out;
+  animation-iteration-count: infinite,      infinite,   1;
+  animation-delay:           0s,            6.5s,       5s;
+  animation-fill-mode:       none,          none,       both;
+}
+
+@keyframes cloud-drift-1 {
+  0%, 100% { transform: scale(1.09) translate(-1.0%, -0.5%) rotate(-2.5deg); }
+  25%      { transform: scale(1.06) translate( 0.6%,  0.7%) rotate( 0.8deg); }
+  55%      { transform: scale(1.05) translate( 0.8%,  0.3%) rotate( 3deg);  }
+  78%      { transform: scale(1.07) translate(-0.4%,  0.5%) rotate(-0.8deg); }
+}
+
+@keyframes cloud-drift-2 {
+  0%, 100% { transform: scale(1.07) translate( 0.6%, -0.4%) rotate( 2.5deg); }
+  30%      { transform: scale(1.09) translate(-0.5%,  0.4%) rotate(-1.5deg); }
+  62%      { transform: scale(1.06) translate(-0.8%,  0.8%) rotate(-3deg);  }
+}
+
+@keyframes cloud-fade {
+  0%, 100% { opacity: 0.55; }
+  32%      { opacity: 0.55; }
+  50%      { opacity: 0.10; }
+  68%      { opacity: 0.55; }
+}
+
+@keyframes static-exit {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* hold full for 2s, then fade to black over 5s */
+@keyframes cover-intro-exit {
+  0%     { opacity: 1; }
+  28.57% { opacity: 1; }
+  100%   { opacity: 0; }
+}
+
+/* every 30s: 20s dark → 5s fade in → 5s fade out */
+@keyframes cover-ghost {
+  0%, 66.67% { opacity: 0; }
+  83.33%     { opacity: 1; }
+  100%       { opacity: 0; }
+}
+
+@keyframes cloud-intro {
+  from { opacity: 0; }
+  to   { opacity: 0.55; }
+}
+
+/* faint moonlit pulse — cool, not warm — sits over the swirl */
+.cover-light-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 62% 22%,
+    rgba(226, 233, 218, 0.85) 0%,
+    rgba(196, 208, 188, 0.30) 22%,
+    rgba(150, 165, 150, 0.10) 45%,
+    transparent 68%
+  );
+  opacity: 0;
+  animation: cover-light-pulse 28s 3s ease-in-out infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+
+@keyframes cover-light-pulse {
+  0%, 100% { opacity: 0; }
+  30%       { opacity: 0.16; }
+  68%       { opacity: 0.05; }
+}
+
+/* grain — same technique as the prose pages, carried onto the cover */
+.cover-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* vignette to ground the title area */
+.cover-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center 60%,
+    transparent 35%,
+    rgba(6, 8, 6, 0.55) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-layer,
+  .cover-light-overlay,
+  .cover-photo,
+  .moon-bg,
+  .moon-cloud { animation: none !important; }
+}
+
+/* ============================================
+   MOON SECTION — records background swirl
+   Same technique as cover: static fades into swirl.
+   Animations start paused; JS triggers on scroll.
+   ============================================ */
+.moon-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/moon 2020.jpg');
+  background-size: cover;
+  background-position: center 38%;
+  background-repeat: no-repeat;
+  z-index: 0;
+  opacity: 0;
+  animation: static-exit 4s 0.5s ease-out both;
+}
+
+.moon-cloud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 1;
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent 5%, black 25%, black 72%, transparent 92%);
+  mask-image: linear-gradient(to bottom,
+    transparent 5%, black 25%, black 72%, transparent 92%);
+}
+
+.moon-cloud-inner {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/moon 2020.jpg');
+  background-size: cover;
+  background-position: center 38%;
+  background-repeat: no-repeat;
+}
+
+.moon-cloud-1 {
+  filter: url(#cloud-warp);
+  animation-name:            cloud-drift-1, cloud-fade, cloud-intro;
+  animation-duration:        30s,           38s,        4s;
+  animation-timing-function: ease-in-out,   ease-in-out, ease-out;
+  animation-iteration-count: infinite,      infinite,   1;
+  animation-delay:           0s,            4.5s,       0.5s;
+  animation-fill-mode:       none,          none,       both;
+}
+
+.moon-cloud-2 {
+  filter: url(#cloud-warp-b);
+  animation-name:            cloud-drift-2, cloud-fade, cloud-intro;
+  animation-duration:        36s,           38s,        4s;
+  animation-timing-function: ease-in-out,   ease-in-out, ease-out;
+  animation-iteration-count: infinite,      infinite,   1;
+  animation-delay:           0s,            2s,         0.5s;
+  animation-fill-mode:       none,          none,       both;
+}
+
+.moon-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.moon-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%,
+    transparent 25%,
+    rgba(4, 6, 8, 0.72) 100%
+  );
+}
