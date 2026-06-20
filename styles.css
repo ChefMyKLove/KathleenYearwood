@@ -199,7 +199,8 @@ body {
 .band-photo:nth-child(2) { grid-column: 8 / 13; grid-row: 1; }
 .band-photo:nth-child(3) { grid-column: 1 / 5;  grid-row: 2; }
 
-.band-photo:nth-child(1) img,
+.band-photo:nth-child(1) img { object-fit: contain; object-position: center center; }
+
 .band-photo:nth-child(2) img,
 .band-photo:nth-child(3) img { object-position: center top; }
 .band-photo:nth-child(4) { grid-column: 5 / 9;  grid-row: 2; }
