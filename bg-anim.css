@@ -177,6 +177,23 @@
   .moon-cloud { animation: none !important; }
 }
 
+/* Mobile — static cover/moon, no swirl layers, no infinite animations.
+   The cover photo and moon background just sit still; everything is legible
+   and the page is dramatically lighter to render. */
+@media (max-width: 768px) {
+  .cloud-layer       { display: none; }
+  .cover-light-overlay { display: none; }
+  .cover-photo {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .moon-cloud        { display: none; }
+  .moon-bg {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
 /* ============================================
    MOON SECTION — records background swirl
    Same technique as cover: static fades into swirl.

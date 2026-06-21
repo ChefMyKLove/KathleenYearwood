@@ -798,3 +798,24 @@ footer.site-foot {
     transition: none !important;
   }
 }
+
+/* Mobile — skip all scroll-triggered fade-ins and the infinite scroll-cue bob.
+   Elements appear immediately; the page feels snappier on slower hardware. */
+@media (max-width: 768px) {
+  .band-photo {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .scroll-cue {
+    /* keep the initial fade-in but drop the infinite bounce */
+    animation: rise-in 1.5s 1s ease-out forwards !important;
+  }
+  .band-photo:hover img { transform: none; }
+  .art-slide:hover img  { transform: none; }
+}
