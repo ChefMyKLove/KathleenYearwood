@@ -332,7 +332,7 @@
         headers: { 'Accept': 'application/json' }
       }).then(function (res) {
         if (res.ok) {
-          form.innerHTML = '<p style="color:#c8d8b8;text-align:center;padding:1rem 0;">Message sent — thank you.</p>';
+          form.innerHTML = '<a href="#records" class="send-btn" style="display:block;text-align:center;text-decoration:none;">Submission received — back to records</a>';
         } else {
           btn.textContent = 'Send';
           btn.disabled = false;
