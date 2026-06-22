@@ -220,10 +220,10 @@
     </figure>
     <h2 class="section-heading">Contact</h2>
 
-    <form class="reach-form">
-      <input type="text" placeholder="Your name">
-      <input type="email" placeholder="Your email">
-      <textarea rows="4" placeholder="Message"></textarea>
+    <form class="reach-form" action="https://formspree.io/f/mkolwnrz" method="POST">
+      <input type="text" name="name" placeholder="Your name">
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" rows="4" placeholder="Message" required></textarea>
       <button type="submit" class="send-btn">Send</button>
     </form>
 
@@ -315,6 +315,43 @@
     }, { passive: true });
 
     timer = setInterval(advance, 4500);
+  }());
+
+  // Contact form — AJAX submit via Formspree
+  (function () {
+    var form = document.querySelector('.reach-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('.send-btn');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          form.innerHTML = '<p style="color:#c8d8b8;text-align:center;padding:1rem 0;">Message sent — thank you.</p>';
+        } else {
+          btn.textContent = 'Send';
+          btn.disabled = false;
+          showFormError();
+        }
+      }).catch(function () {
+        btn.textContent = 'Send';
+        btn.disabled = false;
+        showFormError();
+      });
+    });
+    function showFormError() {
+      if (form.querySelector('.form-error')) return;
+      var p = document.createElement('p');
+      p.className = 'form-error';
+      p.style.cssText = 'color:#c06060;text-align:center;margin-top:.5rem;';
+      p.textContent = 'Something went wrong — please try again.';
+      form.appendChild(p);
+    }
   }());
 
   // Moon section: trigger animation when scrolled into view
